@@ -1,0 +1,1 @@
+sap.ui.define(["localui5run/localui5run/controller/Home.controller"],function(o){"use strict";QUnit.module("Home Controller");QUnit.test("I should test the Home controller",function(n){var t=new o;t.onInit();n.ok(t)})});

@@ -9,7 +9,7 @@ import sn.microkernel.component.model.ServerModel;
 @Repository
 public interface ServerRepo extends JpaRepository<ServerModel, Integer>{
 	
-	@Query("SELECT u FROM server u WHERE u.name = ?1")
-	public ServerModel findByName(int port);
+	@Query("SELECT u FROM ServerModel u WHERE u.name = ?1")
+	public ServerModel findByName(String name);
 
 }

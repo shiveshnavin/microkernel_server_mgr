@@ -14,7 +14,7 @@ class MicrokernelApplicationTests {
 	public void main()
 	{
 		ProcScheduler p=new ProcScheduler(new ArrayList<>());
-		p.loadServer("test", "echo Yolo Homs!!");
+		p.loadServer("test", "echo Yolo Homs!!","ui5","");
 	}
 
 }

@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/bc/ui5_ui5/ui2/ushell/resources/sap/ushell/components/factsheet/vocabularies/UI.xml">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/sap/opu/odata/sap/MM_PUR_CNTRL_CTR_MAINTAIN_SRV/$metadata">
+		<edmx:Include Alias="MM_PUR_CNTRL_CTR_MAINTAIN_SRV" Namespace="MM_PUR_CNTRL_CTR_MAINTAIN_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ui.s2p.mm.pur.central.ctr.sts1.MM_PUR_CNTRL_CTR_MAINTAIN_SRV">
+			<!--===============================================================================
+                Entity Type from chosen collection 
+                ================================================================================-->
+			<!--===============================================================================
+	                Entity Type from chosen navigation property
+	                ================================================================================-->
+			<!--      <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrDistributionTPType/PurchasingOrganization"> -->
+			<!--      <Annotation Term="Common.ValueList">-->
+			<!--     <Record>-->
+			<!--	<PropertyValue String="Backend Purchasing Orgs for Cntrl Pur Contr Hub Scenario" Property="Label"/>-->
+			<!--	<PropertyValue String="C_BackendPurgOrgForCntrlContr" Property="CollectionPath"/>-->
+			<!--	<PropertyValue Property="SearchSupported" Bool="false"/>-->
+			<!--	<PropertyValue Property="Parameters">-->
+			<!--	<Collection>-->
+			<!--		<Record Type="Common.ValueListParameterInOut">-->
+			<!--			<PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingOrganization"/>-->
+			<!--			<PropertyValue String="PurchasingOrganization" Property="ValueListProperty"/>-->
+			<!--		</Record>-->
+			<!--		<Record Type="Common.ValueListParameterInOut">-->
+			<!--			<PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>-->
+			<!--			<PropertyValue String="CompanyCode" Property="ValueListProperty"/>-->
+			<!--		</Record>-->
+			<!--		<Record Type="Common.ValueListParameterIn">-->
+			<!--			<PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>-->
+			<!--			<PropertyValue String="Plant" Property="ValueListProperty"/>-->
+			<!--		</Record>-->
+			<!--		<Record Type="Common.ValueListParameterIn">-->
+			<!--			<PropertyValue Property="LocalDataProperty" PropertyPath="LogicalSystem"/>-->
+			<!--			<PropertyValue String="LogicalSystem" Property="ValueListProperty"/>-->
+			<!--		</Record>-->
+			<!--		<Record Type="Common.ValueListParameterDisplayOnly">-->
+			<!--			<PropertyValue String="PurchasingOrganizationName" Property="ValueListProperty"/>-->
+			<!--		</Record>-->
+			<!--	</Collection>-->
+			<!--	</PropertyValue>-->
+			<!--</Record>-->
+			<!--      </Annotation> -->
+			<!--      </Annotations> -->
+			<Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CentralPurchaseContractTPType">
+				<!-- sideeffect for Header distribution update -->
+				<Annotation Term="Common.SemanticKey">
+					<Collection>
+						<PropertyPath>ActivePurchasingDocument</PropertyPath>
+					</Collection>
+				</Annotation>
+				<Annotation Term="Common.SideEffects">
+					<Record Type="Common.SideEffectsType">
+						<PropertyValue Property="SourceEntities">
+							<Collection>
+								<NavigationPropertyPath>to_CntrlPurContrHdrDistrTP</NavigationPropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/ValidationMessage"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Supplier"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="ID" String="HdrGenInfo"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms2"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#IncoTerms"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_AND_PAYMENT_TERMS}"/>
+							<PropertyValue Property="ID" String="HdrPayTerms"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quotation"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#RefDetails"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ReferenceDetails"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="{@i18n&gt;REFERENCE}"/>
+							<PropertyValue Property="ID" String="HdrRef"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrHdrDistrTP/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION}"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurchaseContractItemTP/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;ITEMS}"/>
+							<PropertyValue Property="ID" String="Items"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_LegalTransaction/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;LEGAL_TRANSACTIONS}"/>
+							<PropertyValue Property="ID" String="legalTransactionId"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_DistrdContrForCntrlPurContr/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTED_OUTLINE_AGREEMENTS}"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrVersionHistory/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;VERSION_HISTORY}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingOrganization"/>
+							<PropertyValue Property="ID" String="PurchasingOrg"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Supplier"/>
+							<PropertyValue Property="ID" String="Supplier"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingDocumentStatusName"/>
+							<PropertyValue Property="ID" String="Distributionstatus"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ApprovalStatusName"/>
+							<PropertyValue Property="ID" String="ApprovalStatus"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingDocumentStatus"/>
+							<PropertyValue Property="ID" String="PurchasingDocumentStatus"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingDocumentVersion"/>
+							<PropertyValue Property="ID" String="PurchasingDocumentVersion"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="Common.SideEffects">
+					<Record Type="Common.SideEffectsType">
+						<PropertyValue Property="SourceProperties">
+							<Collection>
+								<PropertyPath>Supplier</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Common.SideEffects">
+					<Record Type="Common.SideEffectsType">
+						<PropertyValue Property="SourceProperties">
+							<Collection>
+								<PropertyPath>CntrlPurContrFlxblDistrIsAllwd</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Common.SideEffects" Qualifier="PaymentTermsChange">
+					<Record Type="Common.SideEffectsType">
+						<PropertyValue Property="SourceProperties">
+							<Collection>
+								<PropertyPath>PaymentTerms</PropertyPath>
+								<PropertyPath>CashDiscount1Days</PropertyPath>
+								<PropertyPath>CashDiscount2Days</PropertyPath>
+								<PropertyPath>NetPaymentDays</PropertyPath>
+								<PropertyPath>CashDiscount1Percent</PropertyPath>
+								<PropertyPath>CashDiscount2Percent</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="TargetEntities">
+							<Collection>
+								<NavigationPropertyPath>to_CntrlPurContrHdrDistrTP</NavigationPropertyPath>
+								<NavigationPropertyPath>to_CntrlPurchaseContractItemTP/to_CntrlPurContrDistributionTP</NavigationPropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Common.SideEffects" Qualifier="UpdateInHdrDistr">
+					<Record Type="Common.SideEffectsType">
+						<PropertyValue Property="SourceEntities">
+							<Collection>
+								<NavigationPropertyPath>to_CntrlPurContrHdrDistrTP</NavigationPropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="ValueChange"/>
+						<PropertyValue Property="TargetEntities">
+							<Collection>
+								<NavigationPropertyPath>to_CntrlPurchaseContractItemTP/to_CntrlPurContrDistributionTP</NavigationPropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurchaseContractItemTPType">
+				<Annotation Term="UI.PresentationVariant">
+					<Record Type="UI.PresentationVariantType">
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType">
+									<PropertyValue Property="Property" PropertyPath="CentralPurchaseContractItem"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Visualizations">
+							<Collection>
+								<AnnotationPath>@UI.LineItem</AnnotationPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RequestAtLeast">
+							<Collection>
+								<PropertyPath>CentralPurchaseContractItem</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<!--<Record Type="UI.CollectionFacet">-->
+						<!--	<PropertyValue Property="Facets">-->
+						<!--		<Collection>-->
+						<!--			<Record Type="UI.ReferenceFacet">-->
+						<!--				<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrAddressTP/@UI.Identification"/>-->
+						<!--				<PropertyValue Property="ID" String="Address"/>-->
+						<!--			</Record>-->
+						<!--			<Record Type="UI.ReferenceFacet">-->
+						<!--				<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrAddressTP/@UI.FieldGroup#ContactInfo1"/>-->
+						<!--				<PropertyValue Property="ID" String="ContactInformation"/>-->
+						<!--			</Record>-->
+						<!--			<Record Type="UI.ReferenceFacet">-->
+						<!--				<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrAddressTP/@UI.FieldGroup#PostalCode1"/>-->
+						<!--				<PropertyValue Property="ID" String="PostalCode"/>-->
+						<!--			</Record>-->
+						<!--		</Collection>-->
+						<!--	</PropertyValue>-->
+						<!--	<PropertyValue Property="Label" String="{@i18n&gt;DELIVERY}"/>-->
+						<!--	<PropertyValue Property="ID" String="Delivery"/>-->
+						<!--</Record>-->
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+										<PropertyValue Property="ID" String="Items"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Material"/>
+										<PropertyValue Property="ID" String="Material"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrderQuantity"/>
+										<PropertyValue Property="ID" String="OrderQuantity"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrderPrice"/>
+										<PropertyValue Property="ID" String="OrderPrice"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="{@i18n&gt;QUANTITY_AND_PRICE}"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrItmCmmdtyQtyTP/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;COMMODITY}"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrDistributionTP/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION}"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Reminder"/>
+										<PropertyValue Property="ID" String="Reminder"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Numbers"/>
+										<PropertyValue Property="ID" String="Numbers"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HandlingIndicators"/>
+										<PropertyValue Property="ID" String="Indicators"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="{@i18n&gt;HANDLING}"/>
+						</Record>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Tolerance"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GRDetails"/>
+									</Record>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GRIRIndicators"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="Label" String="{@i18n&gt;GR/IR_CONTROL}"/>
+						</Record>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrItemReleaseHist/@UI.LineItem"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;RELEASE_DOCUMENTATION}"/>
+							<PropertyValue Property="ID" String="ReleaseHistoryItem"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;CONTRACT_ITEM}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;CONTRACT_ITEMS}"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value">
+									<Apply Function="odata.concat">
+										<Path>ActivePurchasingDocument</Path>
+										<String>{@i18n&gt;/}</String> <Path>CentralPurchaseContractItem</Path> </Apply> </PropertyValue> </Record> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.HeaderFacets">
+               
+                            <Collection>
+                  
+                  
+                  
+                                                               <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#TargetQuantity"/> <PropertyValue Property="ID" String="TargetQuantity"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ContractConsumptionInPct"/> <PropertyValue Property="ID" String="ContractConsumptionItem"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#CntrlPurContrGRConsumptionPct"/> <PropertyValue Property="ID" String="ContractGRConsumptionItem"/> </Record> </Collection> </Annotation> <Annotation Term="Common.SideEffects">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                        
+                        
+                        
+                        
+                                                                                                     <PropertyPath>PurchasingCentralMaterial</PropertyPath> <PropertyPath>TargetQuantity</PropertyPath> <PropertyPath>ContractNetPriceAmount</PropertyPath> <PropertyPath>OrderQuantityUnit</PropertyPath> <PropertyPath>ProductType</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/> </Record> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrDistributionTPType">
+            
+            
+            
+            
+            
+            
+                                                                                                         <Annotation Term="Common.SideEffects" Qualifier="CompanyCodeChange">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>CompanyCode</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/> </Record> </Annotation> <Annotation Term="Common.SideEffects" Qualifier="SourceListFlagChange">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>SourceListIsUpdated</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/ValueChange"/> </Record> </Annotation> <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                  
+                  
+                  
+                  
+                                                                                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrgData"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FirstPayment"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SecondPayment"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;PAYMENT_TERMS}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DistributionType"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DistributionPercentage"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quantity"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION_DETAILS}"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrItemPartnerTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;PARTNERS}"/> <PropertyValue Property="ID" String="ItemDistrPartner"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrItmDistrRelHist/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;RELEASE_DOCUMENTATION}"/> <PropertyValue Property="ID" String="ReleaseHistory"/> </Record> </Collection> </Annotation> <Annotation Term="UI.HeaderFacets">
+               
+                            <Collection>
+                  
+                  
+                  
+                                                               <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#TargetQuantity"/> <PropertyValue Property="ID" String="TargetQuantity"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ContractConsumptionInPct"/> <PropertyValue Property="ID" String="ContractConsumptionItem"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#CntrlPurContrGRConsumptionPct"/> <PropertyValue Property="ID" String="ContractGRConsumptionItem"/> </Record> </Collection> </Annotation> <Annotation Term="Common.SideEffects" Qualifier="GlobalSideEffect">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                        
+                        
+                        
+                        
+                                                                                                     <PropertyPath>DistributionType</PropertyPath> <PropertyPath>PurchasingDocumentCategory</PropertyPath> <PropertyPath>CntrlPurContrDistributionPct</PropertyPath> <PropertyPath>TargetQuantity</PropertyPath> <PropertyPath>TargetAmount</PropertyPath> </Collection> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.HeaderInfo">
+               
+                            <Record Type="UI.HeaderInfoType">
+                  
+                  
+                  
+                                                               <PropertyValue Property="TypeName" String="{@i18n&gt;CENTRAL_PURCHASE_CONTRACT_ITEM_DISTRIBUTION}"/> <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;CENTRAL_PURCHASE_CONTRACT_ITEM_DISTRIBUTION}"/> <PropertyValue Property="Title">
+                     
+                                  <Record Type="UI.DataField">
+                        
+                                     <PropertyValue Property="Value">
+                           
+                                        <Apply Function="odata.concat">
+                              
+                              
+                              
+                              
+                              
+                                                                                                           <Path>ActivePurchasingDocument</Path> <String>{@i18n&gt;/}</String> <Path>CentralPurchaseContractItem</Path> <String>{@i18n&gt;/}</String> <Path>DistributionKey</Path> </Apply> </PropertyValue> </Record> </PropertyValue> </Record> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrItemConditionType">
+            
+            
+            
+                                                         <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Condition1"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Condition2"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Condition3"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;CONDITION}"/> <PropertyValue Property="ID" String="ConditionsItem"/> </Record> </Collection> </Annotation> <Annotation Term="Common.SideEffects" Qualifier="ConditionChange">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                        
+                                                     <PropertyPath>ConditionRateValue</PropertyPath> <PropertyPath>ConditionQuantity</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/> </Record> </Annotation> <Annotation Term="com.sap.vocabularies.Common.v1.SideEffects" Qualifier="GlobalSideEffect">
+               
+                            <Record>
+                  
+                  
+                  
+                                                               <PropertyValue Property="SourceEntities">
+                     
+                                  <Collection>
+                        
+                                     <NavigationPropertyPath>to_CntrlPurchaseContractItemTP</NavigationPropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="ValueChange"/> <PropertyValue Property="TargetProperties">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>ContractNetPriceAmount</PropertyPath> </Collection> </PropertyValue> </Record> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrHdrDistrTPType">
+            
+            
+            
+            
+            
+            
+            
+                                                                                                                         <Annotation Term="UI.PresentationVariant">
+               
+                            <Record Type="UI.PresentationVariantType">
+                  
+                               <PropertyValue Property="SortOrder">
+                     
+                                  <Collection>
+                        
+                                     <Record Type="Common.SortOrderType">
+                           
+                                        <PropertyValue Property="Property" PropertyPath="DistributionKey"/> </Record> </Collection> </PropertyValue> </Record> </Annotation> <Annotation Term="Common.SideEffects" Qualifier="CompanyCodeChange">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>CompanyCode</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/> </Record> </Annotation> <Annotation Term="Common.SideEffects" Qualifier="SourceListFlagChange">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>SourceListIsUpdated</PropertyPath> </Collection> </PropertyValue> <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/ValueChange"/> </Record> </Annotation> <Annotation Term="UI.FieldGroup" Qualifier="Currency">
+               
+                            <Record Type="UI.FieldGroupType">
+                  
+                               <PropertyValue Property="Data">
+                     
+                                  <Collection>
+                        
+                        
+                                                     <Record Type="UI.DataField">
+                           
+                           
+                                                        <PropertyValue Property="Value" Path="Currency"/> <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/> </Record> <Record Type="UI.DataField">
+                           
+                           
+                           
+                                                                        <PropertyValue Property="Value" Path="CntrlPurContrDistributionPct"/> <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/> <Annotation Term="Validation.Minimum" Decimal="0.00"/> </Record> </Collection> </PropertyValue> </Record> </Annotation> <Annotation Term="Common.SideEffects">
+               
+                            <Record Type="Common.SideEffectsType">
+                  
+                  
+                                               <PropertyValue Property="EffectTypes" EnumMember="Common.EffectType/FieldControlChange"/> <PropertyValue Property="SourceProperties">
+                     
+                                  <Collection>
+                        
+                        
+                                                     <PropertyPath>CntrlPurContrDistributionPct</PropertyPath> <PropertyPath>PurchasingDocumentCategory</PropertyPath> </Collection> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.HeaderInfo">
+               
+                            <Record Type="UI.HeaderInfoType">
+                  
+                  
+                  
+                                                               <PropertyValue Property="TypeName" String="{@i18n&gt;CENTRAL_PURCHASE_CONTRACT_HDR_DISTRIBUTION}"/> <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;CENTRAL_PURCHASE_CONTRACT_HDR_DISTRIBUTION}"/> <PropertyValue Property="Title">
+                     
+                                  <Record Type="UI.DataField">
+                        
+                                     <PropertyValue Property="Value">
+                           
+                                        <Apply Function="odata.concat">
+                              
+                              
+                              
+                                                                           <Path>ActivePurchasingDocument</Path> <String>{@i18n&gt;/}</String> <Path>DistributionKey</Path> </Apply> </PropertyValue> </Record> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                  
+                  
+                                                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrgData"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> <PropertyValue Property="ID" String="GeneralInfo"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FirstPayment"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SecondPayment"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;PAYMENT_TERMS}"/> <PropertyValue Property="ID" String="Payment"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrHdrPartnerTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;PARTNERS}"/> <PropertyValue Property="ID" String="HdrDistrPartner"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurchaseContractItemTPType/ContractConsumptionInPct">
+            
+                         <Annotation Term="CQP.Unit" String="%"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurchaseContractItemTPType/CntrlPurContrGRConsumptionPct">
+            
+                         <Annotation Term="CQP.Unit" String="%"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrDistributionTPType/ContractConsumptionInPct">
+            
+                         <Annotation Term="CQP.Unit" String="%"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrDistributionTPType/CntrlPurContrGRConsumptionPct">
+            
+                         <Annotation Term="CQP.Unit" String="%"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CentralPurchaseContractTPType/CntrlPurContrFlxblDistrIsAllwd">
+            
+                         <Annotation Term="Common.Label" String="{@i18n&gt;FLEXIBLE_DISTRIBUTION}"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrHierHdrTPType">
+            
+            
+                                         <Annotation Term="UI.HeaderFacets">
+               
+                            <Collection>
+                  
+                  
+                  
+                                                               <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingOrganization"/> <PropertyValue Property="ID" String="HCTRPurchOrgDp"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Supplier"/> <PropertyValue Property="ID" String="HctrSupplierDP"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ApprovalStatusName"/> <PropertyValue Property="ID" String="ApproverStatDP"/> </Record> </Collection> </Annotation> <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                  
+                  
+                  
+                  
+                  
+                                                                                                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="ID" String="HierHdrGenInfo"/> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Supplier"/> </Record> </Collection> </PropertyValue> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="ID" String="HierHdrPayTerms"/> <PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_AND_PAYMENT_TERMS}"/> <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#IncoTerms"/> </Record> </Collection> </PropertyValue> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quotation"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ReferenceDetails"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ExtReferenceDetails"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;REFERENCE}"/> <PropertyValue Property="ID" String="HierHdrRef"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurchaseContractItemTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;ITEMS}"/> <PropertyValue Property="ID" String="HierItems"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_SubordinateCntrlContrTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;SUBORDINATE_CENTRAL_CONTRACTS_}"/> <PropertyValue Property="ID" String="SubordCntrlContr"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Target" AnnotationPath="to_DistributionOvw/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION_OVERVIEW}"/> <PropertyValue Property="ID" String="DistrOvw"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrHierItemTPType">
+            
+            
+                                         <Annotation Term="UI.PresentationVariant">
+               
+                            <Record Type="UI.PresentationVariantType">
+                  
+                               <PropertyValue Property="GroupBy">
+                     
+                                  <Collection>
+                        
+                                     <PropertyPath>to_CntrlPurContrDistributionTP/ProcmtHubCompanyCodeGroupingID</PropertyPath> </Collection> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                  
+                  
+                  
+                  
+                  
+                                                                                                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                                                        <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> <PropertyValue Property="ID" String="HierItems"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Material"/> <PropertyValue Property="ID" String="HierMaterial"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                                                        <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrderQuantity"/> <PropertyValue Property="ID" String="HierOrderQuantity"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrderPrice"/> <PropertyValue Property="ID" String="HierOrderPrice"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;QUANTITY_AND_PRICE}"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrDistributionTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Reminder"/> <PropertyValue Property="ID" String="HierReminder"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Numbers"/> <PropertyValue Property="ID" String="HierNumbers"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                              
+                                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HandlingIndicators"/> <PropertyValue Property="ID" String="HierIndicators"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;HANDLING}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Tolerance"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GRDetails"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GRIRIndicators"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;GRIR_CONTROL}"/> </Record> <Record Type="UI.ReferenceFacet">
+                     
+                     
+                                                  <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrItemConditionTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;CONDITION}"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrHierItemDistrTPType">
+            
+                         <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                  
+                  
+                                                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets" Path="">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OrgData"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets" Path="">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FirstPayment"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SecondPayment"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;PAYMENT_TERMS}"/> </Record> <Record Type="UI.CollectionFacet">
+                     
+                     
+                                                  <PropertyValue Property="Facets" Path="">
+                        
+                                     <Collection>
+                           
+                           
+                           
+                                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DistributionType"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#DistributionPercentage"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quantity"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION_DETAILS}"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_SubordinateCntrlContrTPType">
+            
+            
+                                         <Annotation Term="UI.LineItem">
+               
+                            <Collection>
+                  
+                  
+                  
+                  
+                  
+                  
+                                                                                                               <Record Type="UI.DataField">
+                     
+                     
+                                                  <PropertyValue Property="Value" Path="ProcmtHubCompanyCodeGroupingID"/> <PropertyValue Property="Label" String="{@i18n&gt;CompanyCodeGroup}"/> </Record> <Record Type="UI.DataFieldWithIntentBasedNavigation">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="SemanticObject" String="CentralPurchaseContract"/> <PropertyValue Property="Value" Path="CentralPurchaseContract"/> <PropertyValue Property="Action" String="manage"/> </Record> <Record Type="UI.DataField">
+                     
+                     
+                                                  <PropertyValue Property="Value" Path="CntrlPurContrDescription"/> <PropertyValue Property="Label" String="{@i18n&gt;HctrDescription}"/> </Record> <Record Type="UI.DataField">
+                     
+                                  <PropertyValue Property="Value" Path="CompanyCode"/> </Record> <Record Type="UI.DataField">
+                     
+                                  <PropertyValue Property="Value" Path="PurchasingOrganization"/> </Record> <Record Type="UI.DataField">
+                     
+                     
+                                                  <PropertyValue Property="Value" Path="PurchaseContractType"/> <PropertyValue Property="Label" String="{@i18n&gt;CctrType}"/> </Record> </Collection> </Annotation> <Annotation Term="UI.Facets">
+               
+                            <Collection>
+                  
+                               <Record Type="UI.CollectionFacet">
+                     
+                     
+                     
+                                                                  <PropertyValue Property="Facets">
+                        
+                                     <Collection>
+                           
+                           
+                                                        <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GenInfo2"/> </Record> <Record Type="UI.ReferenceFacet">
+                              
+                                           <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GenInfo1"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> <PropertyValue Property="ID" String="IDSUBCTRLS"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurchaseContractItemTPType/CntrlPurContractGRQuantity">                <Annotation Term="Common.Label" String="{@i18n&gt;CntrlPurContractGRQuantity}"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurchaseContractItemTPType/CntrlPurContractGRAmount">                <Annotation Term="Common.Label" String="{@i18n&gt;CntrlPurContractGRAmount}"/> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrVersionHistoryType">	
+        		 
+            	 
+				
+				 
+			                                    <Annotation Term="Common.SemanticKey">	
+        			 
+            	         <Collection>	
+	                	 
+                	         <PropertyPath>ActivePurchasingDocument</PropertyPath> </Collection> </Annotation> <Annotation Term="UI.Facets">	
+        			 
+				         <Collection>	
+        				 
+        				 
+				    	 
+	            		 
+        				 
+            			 
+        				 
+					                                                               <Record Type="UI.CollectionFacet">	
+        					 
+        					 
+        					 
+        				                           <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> <PropertyValue Property="Facets">	
+								 
+        					         <Collection>	
+        							 
+        							 
+        							 
+        						                           <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Purchasing"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Supplier"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="ID" String="VersHistHdrGenInfo"/> </Record> <Record Type="UI.CollectionFacet">	
+        					 
+				             
+				             
+				    	                           <PropertyValue Property="Facets">	
+			            		 
+				                     <Collection>	
+				            		 
+				            		 
+				            		 
+				            	                           <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#PaymentTerms2"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#IncoTerms"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;DELIVERY_AND_PAYMENT_TERMS}"/> <PropertyValue Property="ID" String="VersHistHdrPayTerms"/> </Record> <Record Type="UI.CollectionFacet">	
+				    		 
+	            			 
+	            			 
+	            		                           <PropertyValue Property="Facets">
+				    			 
+	            			         <Collection>
+				    				 
+				    					 
+				            			 
+		            			                           <Record Type="UI.ReferenceFacet">	
+				    					          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Quotation"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#RefDetails"/> </Record> <Record Type="UI.ReferenceFacet">          <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ReferenceDetails"/> </Record> </Collection> </PropertyValue> <PropertyValue Property="Label" String="{@i18n&gt;REFERENCE}"/> <PropertyValue Property="ID" String="VersHistHdrRef"/> </Record> <Record Type="UI.ReferenceFacet">
+            				 
+            				 
+        				                           <PropertyValue Property="Target" AnnotationPath="to_CntrlPurContrHdrDistrTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION}"/> <PropertyValue Property="ID" String="VersHistHdrDistr"/> </Record> <Record Type="UI.ReferenceFacet">	
+			            	 
+			            	 
+            				 
+            			                           <PropertyValue Property="Target" AnnotationPath="to_CntrlPurchaseContractItemTP/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;ITEMS}"/> <PropertyValue Property="ID" String="VersHistItems"/> </Record> <Record Type="UI.ReferenceFacet">
+            				 
+            				 
+            				 
+        				                           <PropertyValue Property="Target" AnnotationPath="to_LegalTransaction/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;LEGAL_TRANSACTIONS}"/> <PropertyValue Property="ID" String="VersHistlegalTransactionId"/> </Record> <Record Type="UI.ReferenceFacet">	
+        					 
+        					 
+						                           <PropertyValue Property="Target" AnnotationPath="to_DistrdContrForCntrlPurContr/@UI.LineItem"/> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTED_OUTLINE_AGREEMENTS}"/> <PropertyValue Property="ID" String="VersHistDistrdContr"/> </Record> </Collection> </Annotation> <Annotation Term="UI.HeaderInfo">
+					 
+				         <Record Type="UI.HeaderInfoType">
+						
+						
+						 
+					                           <PropertyValue Property="TypeName" String="{@i18n&gt;VERSION_DETAIL}"/> <PropertyValue Property="TypeNamePlural" String="{@i18n&gt;VERSION_DETAIL}"/> <PropertyValue Property="Title">
+							 
+						         <Record Type="UI.DataField">
+								 
+							         <PropertyValue Property="Value">
+									 
+								         <Apply Function="odata.concat">
+										
+										 
+										 
+									                           <Path>ActivePurchasingDocument</Path> <String>{@i18n&gt;/}</String> <Path>PurchasingDocumentVersion</Path> </Apply> </PropertyValue> </Record> </PropertyValue> </Record> </Annotation> <Annotation Term="UI.HeaderFacets">	
+					 
+				         <Collection>
+						 
+						 
+		            	 
+		            	 
+		            	 
+						 
+					                                                     <Record Type="UI.ReferenceFacet">	
+							 
+							 
+						                          <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingOrganization"/> <PropertyValue Property="ID" String="VersHistPurchasingOrg"/> <PropertyValue Property="Label" String="{@i18n&gt;PURCHASING_ORGANIZATION}"/> </Record> <Record Type="UI.ReferenceFacet">
+							 
+        					 
+        				                       <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Supplier"/> <PropertyValue Property="ID" String="VersHistSupplier"/> <PropertyValue Property="Label" String="{@i18n&gt;SUPPLIER}"/> </Record> <Record Type="UI.ReferenceFacet">	
+		            		 
+		            		 
+		            	                       <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingDocumentStatusName"/> <PropertyValue Property="ID" String="VersHistDistributionstatus"/> <PropertyValue Property="Label" String="{@i18n&gt;DISTRIBUTION_STATUS}"/> </Record> <Record Type="UI.ReferenceFacet">	
+		            		 
+		            		 
+		            	                       <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ApprovalStatusName"/> <PropertyValue Property="ID" String="VersHistApprovalStatus"/> <PropertyValue Property="Label" String="{@i18n&gt;APPROVAL_STATUS}"/> </Record> <Record Type="UI.ReferenceFacet">	
+		            		 
+		            		 
+		            	                     <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#PurchasingDocumentStatus"/> <PropertyValue Property="ID" String="VersHistPurchasingDocumentStatus"/> <PropertyValue Property="Label" String="{@i18n&gt;STATUS}"/> </Record> </Collection> </Annotation> </Annotations> <Annotations Target="MM_PUR_CNTRL_CTR_MAINTAIN_SRV.C_CntrlPurContrItmCmmdtyQtyTPType">            <Annotation Term="UI.Facets">            <Collection>            <Record Type="UI.CollectionFacet">                        <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> <PropertyValue Property="Facets">            <Collection>            <Record Type="UI.ReferenceFacet">                       <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/> <PropertyValue Property="Label" String="{@i18n&gt;@GeneralInfoFacetLabel}"/> </Record> </Collection> </PropertyValue> </Record> </Collection> </Annotation> </Annotations> </Schema> </edmx:DataServices> </edmx:Edmx>

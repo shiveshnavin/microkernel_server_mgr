@@ -5,7 +5,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="server")
 public class ServerModel {
 
 	@Id
@@ -14,12 +13,12 @@ public class ServerModel {
 	public String cmd;
 	public int port;
 	public String env;
+	public boolean alive;
 	public String dir;
 	
 	public ServerModel() {};
-	public ServerModel(String name,String cmd,int port)  
+	public ServerModel(String name,String cmd)  
 	{
-		this.port=(port);
 		this.name=name;
 		this.cmd=cmd;
 	}
@@ -34,7 +33,7 @@ public class ServerModel {
 			portPrefix=" --server.port="+port;
 			break;
 		case "nodejs":
-			portPrefix=" --port "+port;
+			portPrefix=" "+port;
 			break;
 		case "flask":
 			portPrefix=" -p "+port;
@@ -46,7 +45,13 @@ public class ServerModel {
 			portPrefix=" --port "+port;
 			break;
 		}
+		
+		//System.out.println("Exec> "+cmd+portPrefix);
 		return cmd+portPrefix;
+	}
+	public void setAlive(boolean b) {
+		alive=b;
+		
 	}
 		
 }

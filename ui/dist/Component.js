@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/UIComponent","sap/ui/Device","localui5run/localui5run/model/models","sap/ui/model/json/JSONModel"],function(e,i,t,o){"use strict";return e.extend("localui5run.localui5run.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);this.getRouter().initialize();this.setModel(t.createDeviceModel(),"device")}})});

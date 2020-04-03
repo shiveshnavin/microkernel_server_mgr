@@ -9,40 +9,37 @@ import sn.microkernel.component.model.ServerModel;
 public class BaseMircokernel implements Mircokernel{
 	
 	@Autowired
-	public InterProcessCom commMgr;
+	public InterProcessCom commMgr=new InterProcessCom();
 	@Autowired
-	public MemoryManager memMgr;
+	public MemoryManager memMgr=new MemoryManager();
 	@Autowired
-	public ProcScheduler procMgr;
+	public ProcScheduler procMgr=new ProcScheduler();
 	@Override
-	public long loadServer(String name, String cmd) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String loadServer(String name, String cmd,String env,String dir) {
+		return procMgr.loadServer(name, cmd, env,dir);
+		 
 	}
 	@Override
-	public long unloadServer(long pid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String unloadServer(String name) {
+
+		return ""+procMgr.stopServer(name);
 	}
 	@Override
 	public ArrayList<ServerModel> getServers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return procMgr.getServers();
 	}
 	@Override
-	public int startServer(long pid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String startServer(String name) {
+		return procMgr.startServer(name);
 	}
 	@Override
-	public int stopServer(long pid) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public String stopServer(String name) {
+		return ""+procMgr.stopServer(name);
+ 	}
 	@Override
-	public String callServer(String serverName, String params) {
-		// TODO Auto-generated method stub
-		return null;
+	public String callServer(String src,String serverName, String params) {
+		return commMgr.call(src,serverName,params);
 	}
 	
 	

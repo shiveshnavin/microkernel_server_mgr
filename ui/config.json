@@ -1,0 +1,6 @@
+{
+  "name": "filter",
+  "cmd": "node D:\\node\\nodejs_starter\\to_filter_serv.js",
+  "env": "nodejs",
+  "dir": "s"
+}

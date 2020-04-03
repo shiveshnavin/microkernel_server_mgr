@@ -6,11 +6,11 @@ import sn.microkernel.component.model.ServerModel;
 
 public interface Mircokernel {
 	
-	public long loadServer(String name,String cmd);
-	public long unloadServer(long pid);
+	public String loadServer(String name,String cmd,String env,String dir);
+	public String unloadServer(String port);
 	public ArrayList<ServerModel> getServers();
-	public int startServer(long pid);
-	public int stopServer(long pid);
-	public String callServer(String serverName , String params);
+	public String startServer(String name);
+	public String stopServer(String name);
+	public String callServer(String src,String serverName , String params);
 	
 }
