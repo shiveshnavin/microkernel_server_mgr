@@ -6,7 +6,7 @@
     "devDependencies": {
         "@sap/ui5-builder-webide-extension": "1.0.9",
         "@ui5/cli": "1.7.0",
-        "ui5-middleware-cfdestination": "^0.1.4"
+        "ui5-middleware-cfdestination": "^0.9.1"
     },
     "scripts": {
         "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo"
